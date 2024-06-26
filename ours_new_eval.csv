@@ -1,0 +1,2 @@
+MAE_accuracy (m),MAE_completeness (m),Chamfer_L1 (m),Chamfer_L2 (m),Precision [Accuracy] (%),Recall [Completeness] (%),F-score (%),Spacing (m),Inlier_threshold (m),Outlier_truncation_acc (m),Outlier_truncation_com (m)
+0.20777412935054151,0.6913553940206163,0.4495647616855789,0.7578105797602789,81.23894743781187,38.118952760387025,51.89004824218991,-1,0.2,2.0,2.0
