@@ -8,6 +8,7 @@
 import open3d as o3d
 import numpy as np
 import trimesh
+from visualize_pc import CustomDraw
 def get_align_transformation(rec_meshfile, gt_meshfile):
     """
     Get the transformation matrix to align the reconstructed mesh to the ground truth mesh.
@@ -61,14 +62,13 @@ def eval_mesh2mesh(file_pred, file_trgt,
     if gt_bbx_mask_on: 
         trgt_bbx = mesh_trgt.get_axis_aligned_bounding_box()
         min_bound = trgt_bbx.get_min_bound()
-        min_bound[2]-=down_sample_res
         max_bound = trgt_bbx.get_max_bound()
-        max_bound[2]+=down_sample_res
         trgt_bbx = o3d.geometry.AxisAlignedBoundingBox(min_bound, max_bound) 
         mesh_pred = mesh_pred.crop(trgt_bbx)
         mesh_trgt=mesh_trgt.crop(trgt_bbx)
         # pcd_sample_pred = pcd_sample_pred.crop(trgt_bbx)
-
+    CustomDraw(mesh_pred)
+    CustomDraw(mesh_trgt)
     # sample points on surface. Make sure that we have equal sample density from both meshes.
     # Sample the amount of points equaling the number of vertices from the mesh with most vertices.
     pcd_sample_pred=None

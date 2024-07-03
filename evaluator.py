@@ -1,8 +1,8 @@
 import csv
-from eval_utils import eval_mesh
-from eval_utils import eval_mesh2mesh
+from mesh_evaluator.eval_utils import eval_mesh
+from mesh_evaluator.eval_utils import eval_mesh2mesh
 import argh
-from config import *
+from mesh_evaluator.config import *
 
 
 
@@ -21,7 +21,7 @@ def main(
     if eval_mode == 0:
         print("mesh to mesh evaluation")
         eval_metric = eval_mesh2mesh(pred_mesh_path, gt_ply_path, down_sample_res=down_sample_vox, threshold=dist_thre, 
-                                truncation_acc = truncation_dist_acc, truncation_com = truncation_dist_com, gt_bbx_mask_on = True) 
+                                truncation_acc = truncation_dist_acc, truncation_com = truncation_dist_com, gt_bbx_mask_on = True,icp_align=icp_align) 
 
         print(eval_metric)
 
